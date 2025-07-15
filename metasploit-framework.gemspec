@@ -44,7 +44,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^spec/})
   spec.require_paths = ["lib"]
 
-  spec.required_ruby_version = '>= 2.7'
+  spec.required_ruby_version = '>= 3.1'
 
   # Database support
   spec.add_runtime_dependency 'activerecord', *Metasploit::Framework::RailsVersionConstraint::RAILS_VERSION
@@ -76,7 +76,7 @@ Gem::Specification.new do |spec|
   # Needed for Meterpreter
   spec.add_runtime_dependency 'metasploit-payloads', '2.0.221'
   # Needed for the next-generation POSIX Meterpreter
-  spec.add_runtime_dependency 'metasploit_payloads-mettle', '1.0.35'
+  spec.add_runtime_dependency 'metasploit_payloads-mettle', '1.0.42'
   # Needed by msfgui and other rpc components
   # Locked until build env can handle newer version. See: https://github.com/msgpack/msgpack-ruby/issues/334
   spec.add_runtime_dependency 'msgpack', '~> 1.6.0'
@@ -219,7 +219,7 @@ Gem::Specification.new do |spec|
   # SSH server library with ed25519
   spec.add_runtime_dependency 'hrr_rb_ssh-ed25519'
   # Needed for irb internal command
-  spec.add_runtime_dependency 'irb', '~> 1.7.4'
+  spec.add_runtime_dependency 'irb'
 
   # AWS enumeration modules
   spec.add_runtime_dependency 'aws-sdk-s3'
@@ -258,6 +258,9 @@ Gem::Specification.new do |spec|
   # Needed to parse sections of ELF files in order to retrieve symbols
   spec.add_runtime_dependency 'elftools'
 
+  # Needed for generic in-memory cachine
+  spec.add_runtime_dependency 'lru_redux'
+
   # Standard libraries: https://www.ruby-lang.org/en/news/2023/12/25/ruby-3-3-0-released/
   %w[
     abbrev
@@ -271,6 +274,7 @@ Gem::Specification.new do |spec|
     mutex_m
     ostruct
     rinda
+    syslog
   ].each do |library|
     spec.add_runtime_dependency library
   end
